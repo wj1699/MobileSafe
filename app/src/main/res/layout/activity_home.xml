@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/TitleTheme"
+        android:text="功能列表"
+         />
+
+    <com.wj.mobilesafe.view.FocusTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:text="写什么呀？写什么呀？写点什么呀？我不知道写什么呀！我不知道怎么写呀。。。。。。。。。。"
+        android:textColor="#000"/>
+
+    <GridView
+        android:id="@+id/gv_home"
+        android:verticalSpacing="10dp"
+        android:numColumns="3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </GridView>
+
+</LinearLayout>
