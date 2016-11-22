@@ -29,4 +29,37 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <!--
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/selector_btn_bg"
+            android:drawableRight="@drawable/next"
+            android:onClick="nextPage"
+            android:text="下一页" />-->
+
+    <style name="nextBtn">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:background">@drawable/selector_btn_bg</item>
+        <item name="android:drawableRight">@drawable/next</item>
+        <item name="android:onClick">nextPage</item>
+        <item name="android:text">下一页</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="previousBtn">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:background">@drawable/selector_btn_bg</item>
+        <item name="android:drawableLeft">@drawable/previous</item>
+        <item name="android:onClick">previousPage</item>
+        <item name="android:text">上一页</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 </resources>
