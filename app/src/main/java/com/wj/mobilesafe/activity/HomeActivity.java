@@ -61,7 +61,8 @@ public class HomeActivity extends Activity {
                         showDialog();
                         break;
                     case 8:
-                        startActivity(new Intent(getApplicationContext(), SettingActivity.class));
+                        startActivity(new Intent(getApplicationContext(),
+                                SettingActivity.class));
                         break;
                 }
             }
@@ -120,16 +121,20 @@ public class HomeActivity extends Activity {
 
                     if (pwd.equals(Md5Util.encoder(confirmPwd))) {
                         //进入手机防盗页面
-                        startActivity(new Intent(getApplicationContext(),TextActivity.class));
+                        // startActivity(new Intent(getApplicationContext(),
+                        // TextActivity.class));
+                        startActivity(new Intent(getApplicationContext(),
+                                SetupOverActivity.class));
                         dialog.dismiss();
 
 
-                    }else{
-                        Toast.makeText(getApplicationContext(),"密码错误",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "密码错误",
+                                Toast.LENGTH_SHORT).show();
                     }
 
-                }else{
-                    Toast.makeText(getApplicationContext(),"密码不能为空",
+                } else {
+                    Toast.makeText(getApplicationContext(), "密码不能为空",
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -176,21 +181,25 @@ public class HomeActivity extends Activity {
                 String confirmPwd = et_confirm_pwd.getText().toString().trim();
 
                 //判断输入信息
-                if (!TextUtils.isEmpty(pwd)&&!TextUtils.isEmpty(confirmPwd)) {
+                if (!TextUtils.isEmpty(pwd) && !TextUtils.isEmpty(confirmPwd)) {
                     if (pwd.equals(confirmPwd)) {
                         //进入手机防盗页面
-                        startActivity(new Intent(getApplicationContext(),TextActivity.class));
+                        //startActivity(new Intent(getApplicationContext(),
+                        // TextActivity.class));
+                        startActivity(new Intent(getApplicationContext(),
+                                SetupOverActivity.class));
                         dialog.dismiss();
 
-                        SpUtil.putString(getApplicationContext(),ConstantValue.
+                        SpUtil.putString(getApplicationContext(), ConstantValue.
                                 MOBILE_SAFE_PWD, Md5Util.encoder(pwd));
 
-                    }else{
-                        Toast.makeText(getApplicationContext(),"密码错误",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "密码错误",
+                                Toast.LENGTH_SHORT).show();
                     }
 
-                }else{
-                    Toast.makeText(getApplicationContext(),"用户名和密码不能为空",
+                } else {
+                    Toast.makeText(getApplicationContext(), "用户名和密码不能为空",
                             Toast.LENGTH_SHORT).show();
                 }
             }
