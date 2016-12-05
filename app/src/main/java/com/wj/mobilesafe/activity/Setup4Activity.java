@@ -68,6 +68,9 @@ public class Setup4Activity extends Activity{
 
            finish();
            SpUtil.putBoolean(this, ConstantValue.SETUP_OVER,true);
+
+           overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
+
        }else{
            Toast.makeText(this,"请开启防盗保护",Toast.LENGTH_SHORT).show();
        }
@@ -79,5 +82,7 @@ public class Setup4Activity extends Activity{
     public void previousPage(View view){
         startActivity(new Intent(this,Setup3Activity.class));
         finish();
+
+        overridePendingTransition(R.anim.previous_in_anim,R.anim.previous_out_anim);
     }
 }

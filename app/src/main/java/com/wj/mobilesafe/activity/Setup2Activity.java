@@ -69,6 +69,8 @@ public class Setup2Activity extends Activity{
             Intent intent = new Intent(this,Setup3Activity.class);
             startActivity(intent);
             finish();
+
+            overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
         }
     }
 
@@ -76,5 +78,7 @@ public class Setup2Activity extends Activity{
     public void previousPage(View view){
         startActivity(new Intent(this,Setup1Activity.class));
         finish();
+
+        overridePendingTransition(R.anim.previous_in_anim,R.anim.previous_out_anim);
     }
 }
