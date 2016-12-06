@@ -1,6 +1,5 @@
 package com.wj.mobilesafe.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +13,7 @@ import com.wj.mobilesafe.utils.ConstantValue;
 import com.wj.mobilesafe.utils.SpUtil;
 import com.wj.mobilesafe.view.SettingItemView;
 
-public class Setup2Activity extends Activity{
+public class Setup2Activity extends BaseSetupActivity{
 
     private SettingItemView siv_sim_bound;
 
@@ -58,9 +57,16 @@ public class Setup2Activity extends Activity{
             }
         });
     }
+    @Override
+    protected void showPreviousPage() {
+        startActivity(new Intent(this,Setup1Activity.class));
+        finish();
 
-    //跳转到下一页
-    public void nextPage(View view){
+        overridePendingTransition(R.anim.previous_in_anim,R.anim.previous_out_anim);
+    }
+
+    @Override
+    public void showNextPage() {
 
         String serialNumber = SpUtil.getString(this, ConstantValue.SIM_NUMBER, "");
         if (TextUtils.isEmpty(serialNumber)) {
@@ -72,13 +78,5 @@ public class Setup2Activity extends Activity{
 
             overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
         }
-    }
-
-    //跳转到上一页
-    public void previousPage(View view){
-        startActivity(new Intent(this,Setup1Activity.class));
-        finish();
-
-        overridePendingTransition(R.anim.previous_in_anim,R.anim.previous_out_anim);
     }
 }

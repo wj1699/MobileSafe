@@ -1,6 +1,5 @@
 package com.wj.mobilesafe.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,7 +12,7 @@ import com.wj.mobilesafe.R;
 import com.wj.mobilesafe.utils.ConstantValue;
 import com.wj.mobilesafe.utils.SpUtil;
 
-public class Setup3Activity extends Activity {
+public class Setup3Activity extends BaseSetupActivity {
 
     private EditText et_phone_number;
 
@@ -56,12 +55,21 @@ public class Setup3Activity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    //跳转到下一页
-    public void nextPage(View view) {
+    //跳转到上一页
+    @Override
+    protected void showPreviousPage() {
+        startActivity(new Intent(this, Setup2Activity.class));
+        finish();
 
+        overridePendingTransition(R.anim.previous_in_anim,R.anim.previous_out_anim);
+    }
+
+    //跳转到下一页
+    @Override
+    public void showNextPage() {
         String phone = et_phone_number.getText().toString().trim();
 
-       // String contact_phone = SpUtil.getString(this, ConstantValue.CONTACT_PHONE, "");
+        // String contact_phone = SpUtil.getString(this, ConstantValue.CONTACT_PHONE, "");
         if (!TextUtils.isEmpty(phone)) {
             Intent intent = new Intent(this, Setup4Activity.class);
             startActivity(intent);
@@ -75,14 +83,5 @@ public class Setup3Activity extends Activity {
         }else{
             Toast.makeText(this,"请输入电话号码",Toast.LENGTH_SHORT).show();
         }
-
-    }
-
-    //跳转到上一页
-    public void previousPage(View view) {
-        startActivity(new Intent(this, Setup2Activity.class));
-        finish();
-
-        overridePendingTransition(R.anim.previous_in_anim,R.anim.previous_out_anim);
     }
 }

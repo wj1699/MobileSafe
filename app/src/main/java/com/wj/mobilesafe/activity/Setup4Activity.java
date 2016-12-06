@@ -1,9 +1,7 @@
 package com.wj.mobilesafe.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
@@ -12,7 +10,7 @@ import com.wj.mobilesafe.R;
 import com.wj.mobilesafe.utils.ConstantValue;
 import com.wj.mobilesafe.utils.SpUtil;
 
-public class Setup4Activity extends Activity{
+public class Setup4Activity extends BaseSetupActivity{
 
     private CheckBox cb_box;
 
@@ -23,6 +21,8 @@ public class Setup4Activity extends Activity{
 
         initUI();
     }
+
+
 
     private void initUI() {
         cb_box = (CheckBox) findViewById(R.id.cb_box);
@@ -56,33 +56,34 @@ public class Setup4Activity extends Activity{
         });
     }
 
-    //跳转到下一个页面
-   public void nextPage(View view){
-
-       boolean open_security = SpUtil.getBoolean(this,
-               ConstantValue.OPEN_SECURITY, false);
-
-       if (open_security) {
-           Intent intent = new Intent(this,SetupOverActivity.class);
-           startActivity(intent);
-
-           finish();
-           SpUtil.putBoolean(this, ConstantValue.SETUP_OVER,true);
-
-           overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
-
-       }else{
-           Toast.makeText(this,"请开启防盗保护",Toast.LENGTH_SHORT).show();
-       }
-
-
-   }
-
     //跳转到上一个页面
-    public void previousPage(View view){
+    @Override
+    protected void showPreviousPage() {
         startActivity(new Intent(this,Setup3Activity.class));
         finish();
 
         overridePendingTransition(R.anim.previous_in_anim,R.anim.previous_out_anim);
+    }
+
+    //跳转到下一个页面
+    @Override
+    public void showNextPage() {
+
+        boolean open_security = SpUtil.getBoolean(this,
+                ConstantValue.OPEN_SECURITY, false);
+
+        if (open_security) {
+            Intent intent = new Intent(this,SetupOverActivity.class);
+            startActivity(intent);
+
+            finish();
+            SpUtil.putBoolean(this, ConstantValue.SETUP_OVER,true);
+
+            overridePendingTransition(R.anim.next_in_anim,R.anim.next_out_anim);
+
+        }else{
+            Toast.makeText(this,"请开启防盗保护",Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
